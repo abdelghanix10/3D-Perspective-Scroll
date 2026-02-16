@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Perspective Scroll</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap');
+
+        * { 
+            padding: 0; 
+            margin: 0; 
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            font-family: "Bricolage Grotesque", arial, verdana, sans-serif;
+            font-weight: 700;
+            background: #F5F4F3;
+            overflow-x: hidden;
+        }
+
+        .container {
+            height: 300vh;
+            position: relative;
+        }
+
+
+        .scroll-container {
+            position: fixed;
+            width: 24em;
+            height: 50em;
+            bottom: 0;
+            left: 50%;
+            font-size: 350%;
+            text-align: justify;
+            transform-origin: 50% 100%;
+            transform: translateX(-50%) perspective(300px) rotateX(20deg);
+        }
+
+        .content-text {
+            position: absolute;
+            width: 100%;
+            top: 80%;
+            background: linear-gradient(45deg,   #000000 50%, #fc002e 75%, #000000 100%);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="scroll-container">
+            <div class="content-text">
+                <p>THE POKEMON MASTER'S JOURNEY</p>
+                
+                <p>In a world filled with mysterious creatures called Pokemon, a young trainer begins their epic adventure.</p>
+                
+                <p>Armed with nothing but a Pokeball and an unbreakable spirit, they set out to become the very best, like no one ever was. To catch them is their real test, to train them is their cause.</p>
+                
+                <p>From the peaceful Pallet Town to the bustling Celadon City, every step brings new challenges and discoveries. Wild Pokemon roam the tall grass, waiting to be encountered.</p>
+                
+                <p>Pikachu sparks with electricity, Charizard breathes mighty flames, and Blastoise commands the power of rushing waters. Each Pokemon possesses unique abilities that make them special.</p>
+                
+                <p>The eight Gym Leaders stand as formidable opponents, each mastering a different type of Pokemon. Rock, Water, Electric, Grass, Poison, Psychic, Fire, and Ground - all must be conquered.</p>
+                
+                <p>Team Rocket lurks in the shadows, plotting to steal rare Pokemon for their evil schemes. But with friendship and determination, no challenge is too great to overcome.</p>
+                
+                <p>Professor Oak's wisdom guides young trainers: "The bond between Pokemon and trainer is built on trust, respect, and love. Treat your Pokemon well, and they will never let you down."</p>
+                
+                <p>The Elite Four await at the Pokemon League, the ultimate test of skill and strategy. Only the strongest trainers can hope to face the Champion.</p>
+                
+                <p>But the real treasure isn't victory - it's the friendships formed along the way, both with Pokemon and fellow trainers who share the same dream.</p>
+                
+                <p>Gotta catch 'em all!</p>
+                
+                <p>As you journey through different regions - Kanto, Johto, Hoenn, Sinnoh, Unova, Kalos, Alola, and Galar - new Pokemon species await discovery.</p>
+                
+                <p>Legendary Pokemon like Mew, Lugia, Rayquaza, and Arceus hold secrets that could change the world. But with great power comes great responsibility.</p>
+                
+                <p>A Pokemon Master's heart<br />beats with courage and kindness!</p>
+                
+                <p>Remember, young trainer - the journey of a thousand miles begins with a single step out of your hometown. Your Pokemon adventure starts now!</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const content = document.querySelector('.content-text');
+
+        window.addEventListener('scroll', () => {
+            const scrollProgress = window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight);
+            content.style.top = (80 - (scrollProgress * 100)) + '%';
+        });
+    </script>
+</body>
+</html>
